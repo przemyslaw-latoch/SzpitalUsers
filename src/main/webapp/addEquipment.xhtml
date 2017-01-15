@@ -1,41 +1,41 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://java.sun.com/jsf/core">
-<ui:composition template="template.xhtml">
-    <ui:define name="content">
-        <p:panelGrid columns="2">
+    <ui:composition template="template.xhtml">
+        <ui:define name="content">
+            <p:panelGrid columns="2">
 
-            <h:outputLabel>Nazwa</h:outputLabel>
-            <h:inputText value="#{addEquipmentView.equipment.name}"/>
+                <h:outputLabel>Nazwa</h:outputLabel>
+                <h:inputText value="#{addEquipmentView.equipment.name}"/>
 
-            <h:outputLabel>Typ</h:outputLabel>
-            <p:selectOneButton value="#{addEquipmentView.equipment.type}" converter="#{addEquipmentView.typeConverter}">
-                <f:selectItems value="#{addEquipmentView.types}"/>
-            </p:selectOneButton>
-            
-            <h:outputLabel>Opis</h:outputLabel>
-            <h:inputText value="#{addEquipmentView.equipment.description}"/>
+                <h:outputLabel>Typ</h:outputLabel>
+                <p:selectOneButton value="#{addEquipmentView.equipment.type}" converter="#{addEquipmentView.typeConverter}">
+                    <f:selectItems value="#{addEquipmentView.types}"/>
+                </p:selectOneButton>
 
-        </p:panelGrid>
-        <h:commandButton value="#{msg.CREATE}" action="#{addEquipmentView.saveEquipment}"/>     
-    </ui:define>
+                <h:outputLabel>Opis</h:outputLabel>
+                <h:inputText value="#{addEquipmentView.equipment.description}"/>
 
-     <ui:define name="menu">
-        <ul>
-            <li>
-                <h:commandLink action="home" value="#{msg.HOME}"/>
-            </li>
-            <li>
-                <h:commandLink action="equipmentList" value="#{msg.EQUIPMENT_LIST}"/>
-            </li>
-            <li>
-                <h:commandLink action="addEquipment" value="#{msg.ADD_EQUIPMENT}"/>
-            </li>
-        </ul>
-    </ui:define>
-</ui:composition>
+            </p:panelGrid>
+            <h:commandButton value="#{msg.CREATE}" action="#{addEquipmentView.saveEquipment}"/>     
+        </ui:define>
+
+        <ui:define name="menu">
+            <ul>
+                <li>
+                    <h:commandLink action="home" value="#{msg.HOME}"/>
+                </li>
+                <li>
+                    <h:commandLink action="equipmentList" value="#{msg.EQUIPMENT_LIST}"/>
+                </li>
+                <li>
+                    <h:commandLink action="addEquipment" value="#{msg.ADD_EQUIPMENT}"/>
+                </li>
+            </ul>
+        </ui:define>
+    </ui:composition>
 </html>

@@ -20,6 +20,8 @@
                     <b:dataTableColumn value="#{equipment.description}" label="Opis" />
                 </b:dataTable>
             </div>
+            <h:inputText value="#{equipmentListView.eq_id}"/>
+            <h:commandButton value="#{msg.REMOVE_EQUIPMENT}" action="#{equipmentListView.removeEquipment}"/>  
         </ui:define>
 
         <ui:define name="menu">

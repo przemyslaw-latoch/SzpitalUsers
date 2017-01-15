@@ -1,6 +1,5 @@
 package szpital.administration.data;
 
-import szpital.users.data.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,8 +21,7 @@ import java.io.Serializable;
 @Getter
 @Setter
 @NamedQueries({
-    @NamedQuery(name = "Equipment.findAll", query = "SELECT e FROM Equipment e"),
-    @NamedQuery(name = "Equipment.findById", query = "SELECT e FROM Equipment e WHERE e.id = :id"),})
+    @NamedQuery(name = "Equipment.findAll", query = "SELECT e FROM Equipment e")})
 public class Equipment implements Serializable {
     
     @Id

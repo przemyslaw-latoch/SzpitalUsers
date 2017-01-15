@@ -19,7 +19,6 @@ import szpital.administration.services.EquipmentService;
  *
  * @author Przemyslaw
  */
-
 @ManagedBean
 @ViewScoped
 @Getter
@@ -43,6 +42,12 @@ public class EquipmentListView implements Serializable {
     }
 
     public void equipmentOnSelect(Long equipment_id) {
-        eq_id=equipment_id;
+        eq_id = equipment_id;
+    }
+
+    public void removeEquipment() {  
+        if (eq_id != null) {
+            equipmentService.remove(equipmentService.getEquipment(eq_id));
+        }
     }
 }
