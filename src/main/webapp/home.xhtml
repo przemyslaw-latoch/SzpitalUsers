@@ -24,6 +24,9 @@
             <li>
                 <h:commandLink action="calendar" value="#{msg.CALENDAR}"/>
             </li>
+            <c:if test="#{loginView.userContext.user.admin}">
+                <li><h:commandLink action="equipmentList" value="#{msg.STOCKTAKING}"/></li>
+            </c:if>
         </ul>
     </ui:define>
 </ui:composition>
