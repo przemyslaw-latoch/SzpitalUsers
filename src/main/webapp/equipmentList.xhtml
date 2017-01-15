@@ -1,27 +1,39 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:p="http://primefaces.org/ui"
+      xmlns:b="http://bootsfaces.net/ui"
       xmlns:f="http://java.sun.com/jsf/core">
-<ui:composition template="template.xhtml">
-    <ui:define name="content">
-        Lista.
-    </ui:define>
+    <ui:composition template="template.xhtml">
+        <ui:define name="content">
+            <div style="width:100%; display: inline-block; vertical-align: top;">
+                <b:dataTable value="#{equipmentListView.getEquipmentList()}" var="equipment"
+                             select="true"
+                             selectionMode="single"
+                             onselect="ajax:equipmentListView.equipmentOnSelect(equipment.id);"
+                             >                    
+                    <b:dataTableColumn value="#{equipment.id.toString()}" label="ID" />
+                    <b:dataTableColumn value="#{equipment.name}" label="Nazwa" />
+                    <b:dataTableColumn value="#{equipment.type}" label="Typ" />
+                    <b:dataTableColumn value="#{equipment.description}" label="Opis" />
+                </b:dataTable>
+            </div>
+        </ui:define>
 
-    <ui:define name="menu">
-        <ul>
-            <li>
-                <h:commandLink action="home" value="#{msg.HOME}"/>
-            </li>
-            <li>
-                <h:commandLink action="equipmentList" value="#{msg.EQUIPMENT_LIST}"/>
-            </li>
-            <li>
-                <h:commandLink action="addEquipment" value="#{msg.ADD_EQUIPMENT}"/>
-            </li>
-        </ul>
-    </ui:define>
-</ui:composition>
+        <ui:define name="menu">
+            <ul>
+                <li>
+                    <h:commandLink action="home" value="#{msg.HOME}"/>
+                </li>
+                <li>
+                    <h:commandLink action="equipmentList" value="#{msg.EQUIPMENT_LIST}"/>
+                </li>
+                <li>
+                    <h:commandLink action="addEquipment" value="#{msg.ADD_EQUIPMENT}"/>
+                </li>
+            </ul>
+        </ui:define>
+    </ui:composition>
 </html>

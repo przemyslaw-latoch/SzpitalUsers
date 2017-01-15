@@ -1,5 +1,6 @@
 package szpital.administration.services;
 
+import java.util.List;
 import szpital.administration.data.*;
 
 import javax.ejb.Stateless;
@@ -11,6 +12,11 @@ public class EquipmentService {
     
     @PersistenceContext(unitName = "medsystem")
     private EntityManager em;
+    
+    public List<Equipment> getAllEquipment() {
+        return em.createNamedQuery("Equipment.findAll", Equipment.class)
+                .getResultList();
+    }
     
     public Equipment getEquipment(Long id) {
         return em.createNamedQuery("Equipment.findById", Equipment.class)

@@ -7,7 +7,21 @@
       xmlns:f="http://java.sun.com/jsf/core">
 <ui:composition template="template.xhtml">
     <ui:define name="content">
-        Dodaj nowy sprzęt.     
+        <p:panelGrid columns="2">
+
+            <h:outputLabel>Nazwa</h:outputLabel>
+            <h:inputText value="#{addEquipmentView.equipment.name}"/>
+
+            <h:outputLabel>Typ</h:outputLabel>
+            <p:selectOneButton value="#{addEquipmentView.equipment.type}" converter="#{addEquipmentView.typeConverter}">
+                <f:selectItems value="#{addEquipmentView.types}"/>
+            </p:selectOneButton>
+            
+            <h:outputLabel>Opis</h:outputLabel>
+            <h:inputText value="#{addEquipmentView.equipment.description}"/>
+
+        </p:panelGrid>
+        <h:commandButton value="#{msg.CREATE}" action="#{addEquipmentView.saveEquipment()}"/>     
     </ui:define>
 
      <ui:define name="menu">
