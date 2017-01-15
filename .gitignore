@@ -1,0 +1,12 @@
+/target/*
+.idea/*
+*.iml
+glassfish4/glassfish/domains/domain1/applications/*
+glassfish4/glassfish/domains/domain1/osgi-cache/*
+glassfish4/glassfish/domains/domain1/logs/*
+glassfish4/glassfish/domains/domain1/generated/*
+glassfish4/glassfish/domains/domain1/config/domain.xml.bak
+glassfish4/glassfish/domains/domain1/config/local-password
+glassfish4/glassfish/domains/domain1/config/pid
+glassfish4/glassfish/domains/domain1/config/pid.prev
+glassfish4/glassfish/domains/domain1/logs/server.log

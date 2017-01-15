@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+<ui:composition template="template.xhtml">
+    <ui:define name="content">
+        <p:panelGrid columns="2">
+
+            <h:outputLabel>Login</h:outputLabel>
+            <h:inputText value="#{createUserView.user.login}"/>
+
+            <h:outputLabel>Imię</h:outputLabel>
+            <h:inputText value="#{createUserView.user.name}"/>
+
+            <h:outputLabel>Nazwisko</h:outputLabel>
+            <h:inputText value="#{createUserView.user.lastName}"/>
+
+            <h:outputLabel>Email</h:outputLabel>
+            <h:inputText value="#{createUserView.user.email}"/>
+
+            <h:outputLabel>Hasło</h:outputLabel>
+            <h:inputSecret value="#{createUserView.pass}"/>
+
+            <h:outputLabel>Potwierdź hasło</h:outputLabel>
+            <h:inputSecret value="#{createUserView.confirmPass}"/>
+
+            <h:outputLabel>Data urodzenia</h:outputLabel>
+            <h:inputText value="#{createUserView.birthdayString}"/>
+
+            <h:outputLabel>Rola</h:outputLabel>
+            <p:selectOneButton value="#{createUserView.user.role}" converter="#{createUserView.roleConverter}">
+                <f:selectItems value="#{createUserView.roles}"/>
+            </p:selectOneButton>
+
+        </p:panelGrid>
+        <h:commandButton value="#{msg.CREATE}" action="#{createUserView.saveUser}"/>
+    </ui:define>
+
+    <ui:define name="menu">
+        <ul>
+            <li>
+                <h:commandLink action="home" value="#{msg.HOME}"/>
+            </li>
+            <li>
+                <h:commandLink action="profile" value="#{msg.PROFILE}"/>
+            </li>
+            <li>
+                <h:commandLink action="notes" value="#{msg.NOTES}"/>
+            </li>
+        </ul>
+    </ui:define>
+</ui:composition>
+</html>

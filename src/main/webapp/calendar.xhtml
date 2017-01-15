@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://java.sun.com/jsf/html">
+<ui:composition template="template.xhtml">
+    <ui:define name="content">
+        <h3>#{msg.CALENDAR}</h3>
+        <iframe src="https://calendar.google.com/calendar/embed?src=fbvkmqkbmfj7k645j7666sklpk%40group.calendar.google.com" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+    </ui:define>
+
+    <ui:define name="menu">
+        <ul>
+            <li>
+                <h:commandLink action="profile" value="#{msg.PROFILE}"/>
+            </li>
+            <li>
+                <h:commandLink action="home" value="#{msg.HOME}"/>
+            </li>
+            <li>
+                <h:commandLink action="notes" value="#{msg.NOTES}"/>
+            </li>
+        </ul>
+    </ui:define>
+</ui:composition>
+</html>

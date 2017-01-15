@@ -1,0 +1,18 @@
+.panel-footer {
+    clear: both;
+}
+
+.navbar {
+    float: left;
+    width: 10%;
+}
+
+.text_area {
+    width: 100%;
+    min-height: 300px;
+}
+
+.content {
+    float: right;
+    width: 90%;
+}

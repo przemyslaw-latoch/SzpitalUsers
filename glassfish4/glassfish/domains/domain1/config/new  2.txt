@@ -1,0 +1,26 @@
+CREATE SEQUENCE game_id_seq
+   INCREMENT 1
+   START 1
+   MAXVALUE 1234567890;
+ALTER SEQUENCE public.game_id_seq
+  OWNER TO game_management;
+
+CREATE SEQUENCE game_time_id_seq
+   INCREMENT 1
+   START 1
+   MAXVALUE 1234567890;
+ALTER SEQUENCE public.game_time_id_seq
+  OWNER TO game_management;
+
+CREATE TABLE game (
+id BIGINT NOT NULL DEFAULT nextval('game_id_seq'),
+name VARCHAR(50) NOT NULL,
+genre VARCHAR(50) NOT NULL 
+);
+
+CREATE TABLE game_time (
+id BIGINT NOT NULL DEFAULT nextval('game_time_id_seq'),
+game_id BIGINT NOT NULL,
+start_date TIMESTAMP,
+end_date TIMESTAMP
+);

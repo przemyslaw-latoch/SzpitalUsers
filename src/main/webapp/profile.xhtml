@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://java.sun.com/jsf/html">
+<ui:composition template="template.xhtml">
+    <ui:define name="content">
+        <h3>#{msg.PROFILE}</h3>
+        <p:panelGrid>
+            <p:panelGroup>
+                <p:outputLabel value="#{msg.NAME}: "/>
+                <p:outputLabel value="#{profileView.userContext.userName}"/>
+            </p:panelGroup>
+            <p:panelGroup>
+                <p:outputLabel value="#{msg.LAST_NAME}: "/>
+                <p:outputLabel value="#{profileView.userContext.userLastName}"/>
+            </p:panelGroup>
+            <p:panelGroup>
+                <p:outputLabel value="#{msg.AGE}: "/>
+                <p:outputLabel value="#{profileView.userContext.userAge}"/>
+            </p:panelGroup>
+            <p:panelGroup>
+                <p:outputLabel value="#{msg.BIRTHDAY}: "/>
+                <p:outputLabel value="#{profileView.userContext.userBirthDate}"/>
+            </p:panelGroup>
+            <p:panelGroup>
+                <p:outputLabel value="#{msg.CITY}: "/>
+                <p:outputLabel value="#{profileView.userContext.userCity}"/>
+            </p:panelGroup>
+        </p:panelGrid>
+
+        <h:panelGrid columns="2">
+            <p:outputLabel>#{msg.OLD_PASS}</p:outputLabel>
+            <h:inputSecret value="#{profileView.oldPass}"/>
+            <p:outputLabel>#{msg.NEW_PASS}</p:outputLabel>
+            <h:inputSecret value="#{profileView.newPass}"/>
+            <p:outputLabel>#{msg.REPEAT_NEW_PASS}</p:outputLabel>
+            <h:inputSecret value="#{profileView.confirmNewPass}"/>
+        </h:panelGrid>
+        <h:commandButton value="#{msg.CHANGE_PASS}" action="#{profileView.executeChangePass}"/>
+    </ui:define>
+
+    <ui:define name="menu">
+        <ul>
+            <li>
+                <h:commandLink action="home" value="#{msg.HOME}"/>
+            </li>
+            <li>
+                <h:commandLink action="notes" value="#{msg.NOTES}"/>
+            </li>
+            <li>
+                <h:commandLink action="calendar" value="#{msg.CALENDAR}"/>
+            </li>
+        </ul>
+    </ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
+    <persistence-unit name="medsystem" transaction-type="JTA">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <!--<jta-data-source>jdbc/medsystem</jta-data-source>-->
+        <exclude-unlisted-classes>false</exclude-unlisted-classes>
+        <properties>
+            <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://oz.umcs.lublin.pl:5432/medsystem"/>
+            <property name="javax.persistence.jdbc.user" value="medsystem"/>
+            <property name="javax.persistence.jdbc.password" value="medsystem"/>
+        </properties>
+    </persistence-unit>
+</persistence>

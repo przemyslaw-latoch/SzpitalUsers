@@ -1,0 +1,40 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://xmlns.jcp.org/jsf/html">
+<h:head>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <h:outputScript library="default" name="bootstrap/js/jquery.min.js"/>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <h:outputScript library="default" name="bootstrap/js/bootstrap.min.js"/>
+    <!--<link href="resources/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>-->
+    <h:outputStylesheet library="default" name="bootstrap/css/bootstrap.min.css"/>
+    <h:outputStylesheet library="default" name="custom.css"/>
+    <title>profile</title>
+</h:head>
+<h:body>
+    <h:form>
+        <div id="page">
+            <div id="header-container">
+                <div id="header" class="page-header">
+                    <h:messages/>
+                    <ui:include src="header.xhtml"/>
+                </div>
+            </div>
+            <div id="menu-container" class="navbar navbar-left">
+                <div id="menu">
+                    <ui:insert name="menu"/>
+                </div>
+            </div>
+            <div id="content-container" class="content panel-body">
+                <div id="content">
+                    <ui:insert name="content"/>
+                </div>
+            </div>
+            <div id="footer-container" class="panel-footer">
+                <div id="footer">
+                    <ui:include src="footer.xhtml"/>
+                </div>
+            </div>
+        </div>
+    </h:form>
+</h:body>
+</html>
