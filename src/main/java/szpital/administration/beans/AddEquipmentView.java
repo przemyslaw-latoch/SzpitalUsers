@@ -55,6 +55,8 @@ public class AddEquipmentView implements Serializable {
     private Equipment equipment = new Equipment();
 
     public void saveEquipment() {
-        equipmentService.save(equipment);
+        if(!equipment.getName().isEmpty() && equipment.getType() != null){
+            equipmentService.save(equipment);
+        }
     }
 }
