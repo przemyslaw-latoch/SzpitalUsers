@@ -8,6 +8,7 @@ package szpital.administration.beans;
 import java.io.Serializable;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import lombok.Getter;
@@ -20,7 +21,7 @@ import szpital.administration.services.EquipmentService;
  * @author Przemyslaw
  */
 @ManagedBean
-@ViewScoped
+@SessionScoped
 @Getter
 @Setter
 public class EquipmentListView implements Serializable {
