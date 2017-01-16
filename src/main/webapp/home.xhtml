@@ -1,34 +1,36 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:c="http://java.sun.com/jsp/jstl/core">
-<ui:composition template="template.xhtml">
-    <ui:define name="content">
-        <p>Welcome #{loginView.userContext.userLogin}</p>
-        <h:commandLink action="#{loginView.logout}" value="#{msg.LOGOUT}"/>
-    </ui:define>
+    <ui:composition template="template.xhtml">
+        <ui:define name="content">
+            <p>Welcome #{loginView.userContext.userLogin}</p>
+            <h:commandLink action="#{loginView.logout}" value="#{msg.LOGOUT}"/>
+        </ui:define>
 
-    <ui:define name="menu">
-        <ul>
-            <li>
-                <h:commandLink action="profile" value="#{msg.PROFILE}"/>
-            </li>
-            <c:if test="#{loginView.userContext.user.admin}">
-                <li><h:commandLink action="createUser" value="#{msg.CREATE_USER}"/></li>
-            </c:if>
-            <li>
-                <h:commandLink action="notes" value="#{msg.NOTES}"/>
-            </li>
-            <li>
-                <h:commandLink action="calendar" value="#{msg.CALENDAR}"/>
-            </li>
-            <c:if test="#{loginView.userContext.user.admin}">
-                <li><h:commandLink action="equipmentList" value="#{msg.STOCKTAKING}"/></li>
-            </c:if>
-        </ul>
-    </ui:define>
-</ui:composition>
+        <ui:define name="menu">
+            <ul>
+                <li>
+                    <h:commandLink action="profile" value="#{msg.PROFILE}"/>
+                </li>
+                <c:if test="#{loginView.userContext.user.admin}">
+                    <li><h:commandLink action="createUser" value="#{msg.CREATE_USER}"/></li>
+                </c:if>
+                <li>
+                    <h:commandLink action="notes" value="#{msg.NOTES}"/>
+                </li>
+                <li>
+                    <h:commandLink action="calendar" value="#{msg.CALENDAR}"/>
+                </li>
+                <c:if test="#{loginView.userContext.user.admin}">
+                    <li><h:commandLink action="equipmentList" value="#{msg.STOCKTAKING}"/></li>
+                    <li><h:commandLink action="patientRegistration" value="Zarejestruj pacjenta"/></li>
+                </c:if>
+
+            </ul>
+        </ui:define>
+    </ui:composition>
 </html>
 

@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://java.sun.com/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="templatePatientRegistration.xhtml">
+        <ui:define name="content">
+            <h3>Rejestracja wizyty</h3>
+            <div style="width:50%; display: inline-block; vertical-align: top;">
+                <b:dataTable value="#{patientRegistrationView.getPatientsList()}" var="user"
+                             select="true"
+                             selectionMode="single"
+                             onselect="ajax:patientRegistrationView.patientOnSelect(user.id);"
+                             >
+                    <b:dataTableColumn value="#{user.role}" label="Rola" />
+                    <b:dataTableColumn value="#{user.id.toString()}" label="ID" />
+                    <b:dataTableColumn value="#{user.name}" label="Imie" />
+                    <b:dataTableColumn value="#{user.lastName}" label="Nazwisko" />
+                    <b:dataTableColumn value="#{user.email}" label="email" />
+                    <b:dataTableColumn value="#{user.birthday}" label="Urodzony" />
+                </b:dataTable>
+                <h:form>
+                    <div class="form-group">
+                        <b:dateTimePicker
+                            iconAwesome="bolt"
+                            value="#{patientRegistrationView.visitDate}"
+                            />
+                        <h:commandButton action="#{patientRegistrationView.registerVisit}" value="Zarejestruj" />
+                    </div>
+                </h:form>
+                
+            </div><div style="width:50%; display: inline-block; vertical-align: top;">
+                <b:dataTable value="#{patientRegistrationView.getDoctorsList()}" var="user"
+                             select="true"
+                             selectionMode="single"
+                             onselect="ajax:patientRegistrationView.doctorOnSelect(user.id);"
+                             >
+                    <b:dataTableColumn value="#{user.role}" label="Rola" />
+                    <b:dataTableColumn value="#{user.id.toString()}" label="ID" />
+                    <b:dataTableColumn value="#{user.name}" label="Imie" />
+                    <b:dataTableColumn value="#{user.lastName}" label="Nazwisko" />
+                    <b:dataTableColumn value="#{user.email}" label="email" />
+                    <b:dataTableColumn value="#{user.birthday}" label="Urodzony" />
+                </b:dataTable>
+            </div>
+            <b:dataTable value="#{patientRegistrationView.getVisitsList()}" var="visit"
+                         >
+                <b:dataTableColumn value="#{visit.id.toString()}" label="ID wizyty" />
+                <b:dataTableColumn value="#{visit.id_pat.toString()}" label="ID pacjenta" />
+                <b:dataTableColumn value="#{visit.id_doc.toString()}" label="ID lekarza" />
+                <b:dataTableColumn value="#{visit.visitDate}" label="Data" />
+            </b:dataTable>
+        </ui:define>
+
+        <ui:define name="menu">
+            <ul>
+                <li>
+                    <h:commandLink action="home" value="Home"/>
+                </li>
+            </ul>
+        </ui:define>
+    </ui:composition>
+</html>
