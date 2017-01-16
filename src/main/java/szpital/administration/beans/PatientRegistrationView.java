@@ -7,16 +7,20 @@ package szpital.administration.beans;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import lombok.Getter;
 import lombok.Setter;
 import szpital.administration.data.Visit;
+import szpital.administration.data.VisitTableData;
 import szpital.administration.services.VisitService;
 import szpital.users.data.User;
 import szpital.users.services.AuthService;
@@ -28,6 +32,15 @@ import szpital.users.session.UserContext;
 @Getter
 @Setter
 public class PatientRegistrationView implements Serializable {
+
+    private String currentDate;
+
+    @PostConstruct
+    public void init() {
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        Date today = Calendar.getInstance().getTime();
+        currentDate = df.format(today);
+    }
 
     @Inject
     private UserContext userContext;
@@ -52,9 +65,24 @@ public class PatientRegistrationView implements Serializable {
         return users;
     }
 
-    public List<Visit> getVisitsList() {
+    public List<VisitTableData> getVisitsList() {
         List<Visit> users = visitsService.getVisits();
-        return users;
+        List<VisitTableData> visits = new ArrayList<VisitTableData>();
+        for (Visit user : users) {
+            VisitTableData visitTableData = new VisitTableData();
+            visitTableData.setId(user.getId());
+            visitTableData.setId_doc(user.getId_doc());
+            visitTableData.setId_pat(user.getId_pat());
+            visitTableData.setVisitDate(user.getVisitDate());
+            User userId = userService.getUserById(visitTableData.getId_pat());
+            visitTableData.setPatientName(userId.getName());
+            visitTableData.setPatientLastname(userId.getLastName());
+            userId = userService.getUserById(visitTableData.getId_doc());
+            visitTableData.setDoctorName(userId.getName());
+            visitTableData.setDoctorLastname(userId.getLastName());
+            visits.add(visitTableData);
+        }
+        return visits;
     }
 
     public void patientOnSelect(Long user_id) {
@@ -65,19 +93,16 @@ public class PatientRegistrationView implements Serializable {
         id_doc = user_id;
     }
 
-    public void updateDate() {
-
-    }
-
     Visit visit = new Visit();
 
     public void registerVisit() {
         visit.setId_doc(id_doc);
         visit.setId_pat(id_pat);
-//        long milis = visitDate.getTime() ; // or instant.getMillis() or whatever
+        long milis = visitDate.getTime(); // or instant.getMillis() or whatever
         //ps.setTimestamp(colNum,new Timestamp(milis), calendarUTC);  // column is TIMESTAMPTZ!
-//        visit.setVisitDate(new Timestamp(milis));
-        visit.setVisitDate(new java.sql.Date(visitDate.getTime()));
+        Timestamp dt = new Timestamp(milis);
+        visit.setVisitDate(dt);
+        //visit.setVisitDate(new java.sql.Date(visitDate.getTime()));
         visitsService.save(visit);
         visit = new Visit();
     }

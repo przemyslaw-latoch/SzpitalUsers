@@ -8,8 +8,9 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <ui:composition template="templatePatientRegistration.xhtml">
         <ui:define name="content">
-            <h3>Rejestracja wizyty</h3>
+            <h2>Rejestracja wizyty</h2>
             <div style="width:50%; display: inline-block; vertical-align: top;">
+                <h3>Pacjenci:</h3>
                 <b:dataTable value="#{patientRegistrationView.getPatientsList()}" var="user"
                              select="true"
                              selectionMode="single"
@@ -24,15 +25,18 @@
                 </b:dataTable>
                 <h:form>
                     <div class="form-group">
+                        <h3>Data wizyty:</h3>
                         <b:dateTimePicker
                             iconAwesome="bolt"
                             value="#{patientRegistrationView.visitDate}"
+                            min-date="#{patientRegistrationView.currentDate}"
                             />
                         <h:commandButton action="#{patientRegistrationView.registerVisit}" value="Zarejestruj" />
                     </div>
                 </h:form>
                 
             </div><div style="width:50%; display: inline-block; vertical-align: top;">
+                <h3>Lekarze:</h3>
                 <b:dataTable value="#{patientRegistrationView.getDoctorsList()}" var="user"
                              select="true"
                              selectionMode="single"
@@ -46,11 +50,16 @@
                     <b:dataTableColumn value="#{user.birthday}" label="Urodzony" />
                 </b:dataTable>
             </div>
+            <h3>Wizyty:</h3>
             <b:dataTable value="#{patientRegistrationView.getVisitsList()}" var="visit"
                          >
                 <b:dataTableColumn value="#{visit.id.toString()}" label="ID wizyty" />
                 <b:dataTableColumn value="#{visit.id_pat.toString()}" label="ID pacjenta" />
+                <b:dataTableColumn value="#{visit.patientName}" label="Imie pacjenta" />
+                <b:dataTableColumn value="#{visit.patientLastname}" label="Nazwisko pacjenta" />
                 <b:dataTableColumn value="#{visit.id_doc.toString()}" label="ID lekarza" />
+                <b:dataTableColumn value="#{visit.doctorName}" label="Imie lekarza" />
+                <b:dataTableColumn value="#{visit.doctorLastname}" label="Nazwisko Lekarza" />
                 <b:dataTableColumn value="#{visit.visitDate}" label="Data" />
             </b:dataTable>
         </ui:define>

@@ -26,7 +26,7 @@
                 </li>
                 <c:if test="#{loginView.userContext.user.admin}">
                     <li><h:commandLink action="equipmentList" value="#{msg.STOCKTAKING}"/></li>
-                    <li><h:commandLink action="patientRegistration" value="Zarejestruj pacjenta"/></li>
+                    <li><h:commandLink action="patientRegistration" value="#{msg.PATIENTREGISTER}"/></li>
                 </c:if>
 
             </ul>

@@ -30,6 +30,12 @@ public class UserService {
                 .setParameter("login", user)
                 .getSingleResult();
     }
+    
+    public User getUserById(Long id){
+        return em.createNamedQuery("User.findById", User.class)
+                .setParameter("id", id)
+                .getSingleResult();
+    }
 
     public void save(User user) {
         em.persist(user);

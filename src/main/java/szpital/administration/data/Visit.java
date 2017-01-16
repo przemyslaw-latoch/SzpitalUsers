@@ -28,7 +28,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NamedQueries({
-    @NamedQuery(name = "Visit.findAll", query = "SELECT v FROM Visit v"),})
+    @NamedQuery(name = "Visit.findAll", query = "SELECT v FROM Visit v WHERE v.visitDate > CURRENT_TIMESTAMP"),})
 public class Visit implements Serializable {
 
     @Id
@@ -43,5 +43,5 @@ public class Visit implements Serializable {
     @Column(name = "id_doc")
     Long id_doc;
     @Column(name = "date")
-    Date visitDate;
+    Timestamp visitDate;
 }
