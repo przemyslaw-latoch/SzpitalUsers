@@ -10,12 +10,13 @@
     <h:outputScript library="default" name="bootstrap/js/bootstrap.min.js"/>
     <!--<link href="resources/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>-->
     <h:outputStylesheet library="default" name="bootstrap/css/bootstrap.min.css"/>
+    <h:outputStylesheet library="default" name="custom.css" />
     <title>Login</title>
 </h:head>
-<h:body>
+<h:body styleClass="center-text">
     <h:form>
         <h3>Szpital Użytkownicy</h3>
-        <p:panelGrid>
+        <p:panelGrid styleClass="table-own">
             <p:panelGroup>
                 <h:outputText value="#{msg.USER_NAME}"/>
                 <h:inputText id="username" value="#{loginView.user}" styleClass="form-control"/>

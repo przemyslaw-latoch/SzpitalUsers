@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:p="http://primefaces.org/ui"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <ui:composition template="template.xhtml">
+        <ui:define name="content">
+            <div style="width:100%; display: inline-block; vertical-align: top;">
+                <b:dataTable value="#{employeeListView.employeeList}" var="e"
+                             select="true"
+                             selectionMode="single"
+                             onselect="ajax:employeeListView.employeeOnSelect(e.id);"
+                             >                    
+                    <b:dataTableColumn value="#{e.name}" label="#{msg.NAME}" />
+                    <b:dataTableColumn value="#{e.middleName}" label="#{msg.MIDDLE_NAME}" />
+                    <b:dataTableColumn value="#{e.surname}" label="#{msg.SURNAME}" />
+                    <b:dataTableColumn value="#{e.pesel}" label="#{msg.PESEL}" />
+                    <b:dataTableColumn value="#{e.phoneNumber}" label="#{msg.PHONE_NUMBER}" />
+                    <b:dataTableColumn value="#{e.adress}" label="#{msg.ADDRESS}" />
+                    <b:dataTableColumn value="#{e.contractParameters}" label="#{msg.CONTRACT}" />
+                    <b:dataTableColumn value="#{e.contractDataPeriod}" label="#{msg.WORK_PERIOD}" />
+                    <b:dataTableColumn value="#{e.salaryValue}" label="#{msg.SALARY}" />
+                </b:dataTable>
+            </div>
+           
+        </ui:define>
+
+        <ui:define name="menu">
+            <ul>
+                <li>
+                    <h:commandLink action="home" value="#{msg.HOME}"/>
+                </li>
+                <li>
+                    <h:commandLink action="equipmentList" value="#{msg.EQUIPMENT_LIST}"/>
+                </li>
+                <li>
+                    <h:commandLink action="addEquipment" value="#{msg.ADD_EMPLOYEE}"/>
+                </li>
+            </ul>
+        </ui:define>
+    </ui:composition>
+</html>

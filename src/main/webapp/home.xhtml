@@ -6,8 +6,10 @@
       xmlns:c="http://java.sun.com/jsp/jstl/core">
     <ui:composition template="template.xhtml">
         <ui:define name="content">
-            <p>Welcome #{loginView.userContext.userLogin}</p>
-            <h:commandLink action="#{loginView.logout}" value="#{msg.LOGOUT}"/>
+            <div class="text-right">
+                <p>Welcome #{loginView.userContext.userLogin}</p>
+                <h:commandLink action="#{loginView.logout}" value="#{msg.LOGOUT}"/>
+            </div>
         </ui:define>
 
         <ui:define name="menu">
@@ -27,6 +29,8 @@
                 <c:if test="#{loginView.userContext.user.admin}">
                     <li><h:commandLink action="equipmentList" value="#{msg.STOCKTAKING}"/></li>
                     <li><h:commandLink action="patientRegistration" value="#{msg.PATIENTREGISTER}"/></li>
+                    <li><h:commandLink action="employeeList" value="#{msg.MANAGE_EMPLOYEE}"/></li>
+
                 </c:if>
 
             </ul>
