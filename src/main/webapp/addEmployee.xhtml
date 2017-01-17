@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui">
+    <ui:composition template="template.xhtml">
+        <ui:define name="content">
+            <p:panelGrid columns="2">
+
+                <h:outputLabel>#{msg.NAME}</h:outputLabel>
+                <h:inputText value="#{addEmployeeView.employee.name}"/>
+
+                <h:outputLabel>#{msg.MIDDLE_NAME}</h:outputLabel>
+                <h:inputText value="#{addEmployeeView.employee.middleName}"/>
+
+                <h:outputLabel>#{msg.SURNAME}</h:outputLabel>
+                <h:inputText value="#{addEmployeeView.employee.surname}"/>
+
+                <h:outputLabel>#{msg.PESEL}</h:outputLabel>
+                <h:inputText value="#{addEmployeeView.employee.pesel}"/>
+
+                <h:outputLabel>#{msg.PHONE_NUMBER}</h:outputLabel>
+                <h:inputText value="#{addEmployeeView.employee.phoneNumber}"/>
+
+                <h:outputLabel>#{msg.ADDRESS}</h:outputLabel>
+                <h:inputText value="#{addEmployeeView.employee.adress}"/>
+
+                <h:outputLabel>#{msg.CONTRACT}</h:outputLabel>
+                <p:selectOneButton  converter="#{addEmployeeView.typeConverter}" >
+                    <f:selectItems value="#{addEmployeeView.contractTypesNames}"/>
+                </p:selectOneButton>
+
+                <h:outputLabel>#{msg.WORK_PERIOD}</h:outputLabel>
+                <p:selectOneButton  converter="#{addEmployeeView.timeConverter}">
+                    <f:selectItems value="#{addEmployeeView.workTimeNames}"/>
+                </p:selectOneButton>
+
+                <h:outputLabel>#{msg.DATE_FROM}</h:outputLabel>
+                <b:datepicker
+                   id="cdate3" mode="toggle-icon" showWeek="true" firstDay="1"
+                   value="#{addEmployeeView.dateFrom}"
+                    />
+                <h:outputLabel>#{msg.DATE_TO}</h:outputLabel>
+                <b:datepicker
+                    mode="toggle-icon"
+                    showButtonPanel="true"
+                    changeMonth="true"
+                    changeYear="true"
+                    value="#{addEmployeeView.dateTo}"
+                    />
+
+                <h:outputLabel>#{msg.SALARY}</h:outputLabel>
+                <h:inputText value="#{addEmployeeView.contract.salary}" />
+
+                <h:outputLabel>#{msg.BONUS}</h:outputLabel>
+                <h:inputText value="#{addEmployeeView.contract.bonus}"/>
+
+            </p:panelGrid>
+            <h:commandButton value="#{msg.ADD_EMPLOYEE}" action="#{addEmployeeView.saveEmployee()}"/>     
+        </ui:define>
+
+        <ui:define name="menu">
+            <ul>
+                <li>
+                    <h:commandLink action="home" value="#{msg.HOME}"/>
+                </li>
+                <li>
+                    <h:commandLink action="employeeList" value="#{msg.EMPLOYEE_LIST}"/>
+                </li>
+                <li>
+                    <h:commandLink action="addEmployee" value="#{msg.ADD_EMPLOYEE}"/>
+                </li>
+            </ul>
+        </ui:define>
+    </ui:composition>
+</html>

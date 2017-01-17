@@ -68,8 +68,8 @@ public class Employee implements Serializable {
         return contracts;
     }
 
-    private Contract getLatestContract() {
-        if (!contracts.isEmpty()) {
+    public Contract getLatestContract() {
+        if (contracts != null && !contracts.isEmpty()) {
 
             Contract last = contracts.get(0);
 
@@ -82,6 +82,20 @@ public class Employee implements Serializable {
 
         }
         return null;
+    }
+    
+    public String getLatestContractName()
+    {
+        Contract c = getLatestContract();
+        if(c==null)
+        {
+            return " ";
+        }
+        else if(c.getContractType() != null)
+        {
+            return c.getContractType().name;
+        }
+        return " ";
     }
 
     public float getSalaryValue() {

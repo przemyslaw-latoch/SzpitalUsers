@@ -37,9 +37,17 @@ public class EmployeeListView implements Serializable {
         this.employeeId = employeeId;
     }
 
-    public void removeEquipment() {  
+    public void removeEmployee() {  
         if (employeeId != null) {
             employeeService.remove(employeeService.getEmployee(employeeId));
         }
     }
+    
+    public void fireEmployee()
+    {
+        if (employeeId != null) {
+            employeeService.fireEmployee(employeeId);
+        }
+    }
+    
 }

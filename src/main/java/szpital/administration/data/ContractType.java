@@ -45,4 +45,5 @@ public class ContractType implements Serializable {
     @Column(name = "name")
     String name;
 
+    
 }

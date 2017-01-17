@@ -45,7 +45,7 @@ public class Contract implements Serializable {
     Long id;
 
     @Column(name = "dateFrom")
-    Date dateFrom;
+    java.sql.Date dateFrom;
 
     @Column(name = "dateTo")
     Date dateTo;

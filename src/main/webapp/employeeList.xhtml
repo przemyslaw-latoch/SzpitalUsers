@@ -24,6 +24,7 @@
                     <b:dataTableColumn value="#{e.contractDataPeriod}" label="#{msg.WORK_PERIOD}" />
                     <b:dataTableColumn value="#{e.salaryValue}" label="#{msg.SALARY}" />
                 </b:dataTable>
+                <h:commandButton value="#{msg.FIRE}" action="#{employeeListView.fireEmployee()}"/>  
             </div>
            
         </ui:define>
@@ -34,10 +35,10 @@
                     <h:commandLink action="home" value="#{msg.HOME}"/>
                 </li>
                 <li>
-                    <h:commandLink action="equipmentList" value="#{msg.EQUIPMENT_LIST}"/>
+                    <h:commandLink action="employeeList" value="#{msg.EMPLOYEE_LIST}"/>
                 </li>
                 <li>
-                    <h:commandLink action="addEquipment" value="#{msg.ADD_EMPLOYEE}"/>
+                    <h:commandLink action="addEmployee" value="#{msg.ADD_EMPLOYEE}"/>
                 </li>
             </ul>
         </ui:define>
